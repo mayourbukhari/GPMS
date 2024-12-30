@@ -1,6 +1,6 @@
 import React from 'react';
 import { format } from 'date-fns';
-import { Clock, LogIn, LogOut } from 'lucide-react';
+import { LogIn, LogOut } from 'lucide-react';
 
 interface VisitorLogProps {
   log: {

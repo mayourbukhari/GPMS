@@ -1,11 +1,21 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu, LogOut, Home, Users, FileText, Settings } from 'lucide-react';
+import { useAuthStore } from '../stores/authStore';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 export default function Layout({ children }: LayoutProps) {
+  const signOut = useAuthStore((state) => state.signOut);
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/login');
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navbar */}
@@ -19,7 +29,10 @@ export default function Layout({ children }: LayoutProps) {
               </div>
             </div>
             <div className="flex items-center">
-              <button className="p-2 rounded-full text-gray-600 hover:text-gray-900">
+              <button 
+                onClick={handleSignOut}
+                className="p-2 rounded-full text-gray-600 hover:text-gray-900"
+              >
                 <LogOut className="h-5 w-5" />
               </button>
             </div>
@@ -31,22 +44,22 @@ export default function Layout({ children }: LayoutProps) {
       <div className="flex">
         <div className="w-64 min-h-screen bg-white shadow-sm">
           <nav className="mt-5 px-2">
-            <a href="/" className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+            <Link to="/" className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
               <Home className="mr-3 h-5 w-5" />
               Dashboard
-            </a>
-            <a href="/visitors" className="mt-1 group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+            </Link>
+            <Link to="/visitors" className="mt-1 group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
               <Users className="mr-3 h-5 w-5" />
               Visitors
-            </a>
-            <a href="/passes" className="mt-1 group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+            </Link>
+            <Link to="/passes" className="mt-1 group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
               <FileText className="mr-3 h-5 w-5" />
               Passes
-            </a>
-            <a href="/settings" className="mt-1 group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+            </Link>
+            <Link to="/settings" className="mt-1 group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
               <Settings className="mr-3 h-5 w-5" />
               Settings
-            </a>
+            </Link>
           </nav>
 
           {/* Designer Credit */}
