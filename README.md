@@ -1,5 +1,5 @@
 
-````markdown
+
 # 🛡️ Gate Pass Management System (GPMS)
 
 A web-based application designed to efficiently monitor and manage the entry and exit of employees, visitors, and other personnel within an organization. The Gate Pass Management System enhances security, transparency, and operational efficiency by digitizing traditional paper-based gate pass workflows.
@@ -54,7 +54,7 @@ A web-based application designed to efficiently monitor and manage the entry and
    ```bash
    git clone https://github.com/mayourbukhari/gpms.git
    cd gpms
-````
+
 
 2. **Create and activate a virtual environment**
 
